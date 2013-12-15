@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 15, 2013 12:26:56 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.roadgovern.hbm.Users" table="users" catalog="roadgovern">
+        <id name="userId" type="string">
+            <column name="user_id" length="45" />
+            <generator class="assigned" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="first_name" length="45" not-null="true" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="45" not-null="true" />
+        </property>
+        <property name="role" type="string">
+            <column name="role" length="20" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <property name="createTs" type="timestamp">
+            <column name="create_ts" length="19" not-null="true" />
+        </property>
+        <property name="reportee" type="string">
+            <column name="reportee" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="60" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="45" />
+        </property>
+        <set name="issuePocs" table="issue_poc" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" length="45" not-null="true" />
+            </key>
+            <one-to-many class="com.roadgovern.hbm.IssuePoc" />
+        </set>
+    </class>
+</hibernate-mapping>

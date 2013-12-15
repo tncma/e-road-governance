@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 15, 2013 12:26:56 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.roadgovern.hbm.Items" table="items" catalog="roadgovern">
+        <id name="itemId" type="java.lang.Integer">
+            <column name="item_id" />
+            <generator class="identity" />
+        </id>
+        <property name="itemDesc" type="string">
+            <column name="item_desc" length="65535" />
+        </property>
+        <property name="itemCreatedBy" type="string">
+            <column name="item_createdBy" length="75" not-null="true" />
+        </property>
+        <property name="createTs" type="timestamp">
+            <column name="create_ts" length="19" not-null="true" />
+        </property>
+        <property name="lastChangeTs" type="timestamp">
+            <column name="last_change_ts" length="19" not-null="true" />
+        </property>
+        <property name="itemStatus" type="boolean">
+            <column name="item_status" not-null="true" />
+        </property>
+        <property name="priority" type="string">
+            <column name="priority" length="45" />
+        </property>
+        <property name="stateId" type="int">
+            <column name="state_id" not-null="true" />
+        </property>
+        <property name="districtId" type="int">
+            <column name="district_id" not-null="true" />
+        </property>
+        <property name="cityId" type="int">
+            <column name="city_id" not-null="true" />
+        </property>
+        <property name="roadId" type="int">
+            <column name="road_id" not-null="true" />
+        </property>
+        <property name="issueTypeId" type="int">
+            <column name="issue_type_id" not-null="true" />
+        </property>
+        <property name="createdbyFirstName" type="string">
+            <column name="createdby_first_name" length="45" not-null="true" />
+        </property>
+        <property name="createdbyLastName" type="string">
+            <column name="createdby_last_name" length="45" />
+        </property>
+        <property name="createdbyAddress1" type="string">
+            <column name="createdby_address1" length="100" />
+        </property>
+        <property name="createdbyAddress2" type="string">
+            <column name="createdby_address2" length="100" />
+        </property>
+        <property name="createdbyCity" type="string">
+            <column name="createdby_city" length="30" />
+        </property>
+        <property name="createdbyState" type="string">
+            <column name="createdby_state" length="20" />
+        </property>
+        <property name="createdbyZip" type="string">
+            <column name="createdby_zip" length="10" />
+        </property>
+        <property name="createdbyPhone" type="string">
+            <column name="createdby_phone" length="20" not-null="true" />
+        </property>
+        <property name="createdbyEmail" type="string">
+            <column name="createdby_email" length="35" />
+        </property>
+        <set name="itemLogs" table="item_log" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="item_id" not-null="true" />
+            </key>
+            <one-to-many class="com.roadgovern.hbm.ItemLog" />
+        </set>
+    </class>
+</hibernate-mapping>

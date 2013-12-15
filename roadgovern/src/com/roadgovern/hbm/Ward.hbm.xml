@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 14, 2013 2:14:50 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.roadgovern.hbm.Ward" table="ward" catalog="roadgovern">
+        <id name="wardId" type="java.lang.Integer">
+            <column name="ward_id" />
+            <generator class="identity" />
+        </id>
+        <property name="cityId" type="int">
+            <column name="city_id" not-null="true" />
+        </property>
+        <property name="wardNo" type="int">
+            <column name="ward_no" not-null="true" />
+        </property>
+        <property name="wardName" type="string">
+            <column name="ward_name" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

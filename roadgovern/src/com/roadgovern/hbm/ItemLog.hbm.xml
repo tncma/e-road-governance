@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 15, 2013 12:26:56 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.roadgovern.hbm.ItemLog" table="item_log" catalog="roadgovern">
+        <id name="logId" type="java.lang.Integer">
+            <column name="log_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="items" class="com.roadgovern.hbm.Items" fetch="select">
+            <column name="item_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="status" class="com.roadgovern.hbm.Status" fetch="select">
+            <column name="status_id" />
+        </many-to-one>
+        <property name="loggedBy" type="string">
+            <column name="logged_by" length="75" not-null="true" />
+        </property>
+        <property name="remarks" type="string">
+            <column name="remarks" length="65535" />
+        </property>
+        <property name="createTs" type="timestamp">
+            <column name="create_ts" length="19" not-null="true" />
+        </property>
+        <property name="displayFlag" type="boolean">
+            <column name="displayFlag" not-null="true" />
+        </property>
+        <property name="assignedTo" type="string">
+            <column name="assigned_to" length="75" />
+        </property>
+        <set name="itemAttachmentses" table="item_attachments" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="log_id" not-null="true" />
+            </key>
+            <one-to-many class="com.roadgovern.hbm.ItemAttachments" />
+        </set>
+    </class>
+</hibernate-mapping>

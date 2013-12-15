@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 15, 2013 12:26:56 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.roadgovern.hbm.IssueType" table="issue_type" catalog="roadgovern">
+        <id name="issueTypeId" type="java.lang.Integer">
+            <column name="issue_type_id" />
+            <generator class="identity" />
+        </id>
+        <property name="issueTypeDesc" type="string">
+            <column name="issue_type_desc" length="100" not-null="true" />
+        </property>
+        <set name="issuePocs" table="issue_poc" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="issue_type_id" not-null="true" />
+            </key>
+            <one-to-many class="com.roadgovern.hbm.IssuePoc" />
+        </set>
+    </class>
+</hibernate-mapping>

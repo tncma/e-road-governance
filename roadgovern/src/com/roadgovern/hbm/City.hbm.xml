@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 15, 2013 12:26:56 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.roadgovern.hbm.City" table="city" catalog="roadgovern">
+        <id name="cityId" type="java.lang.Integer">
+            <column name="city_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="district" class="com.roadgovern.hbm.District" fetch="select">
+            <column name="district_id" not-null="true" />
+        </many-to-one>
+        <property name="cityName" type="string">
+            <column name="city_name" length="45" not-null="true" />
+        </property>
+        <set name="issuePocs" table="issue_poc" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="city_id" not-null="true" />
+            </key>
+            <one-to-many class="com.roadgovern.hbm.IssuePoc" />
+        </set>
+        <set name="roads" table="road" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="city_id" not-null="true" />
+            </key>
+            <one-to-many class="com.roadgovern.hbm.Road" />
+        </set>
+    </class>
+</hibernate-mapping>

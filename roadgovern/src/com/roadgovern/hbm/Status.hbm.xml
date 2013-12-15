@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 15, 2013 12:26:56 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.roadgovern.hbm.Status" table="status" catalog="roadgovern">
+        <id name="statusId" type="java.lang.Integer">
+            <column name="status_id" />
+            <generator class="identity" />
+        </id>
+        <property name="statusName" type="string">
+            <column name="status_name" length="45" not-null="true" />
+        </property>
+        <set name="itemLogs" table="item_log" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="status_id" />
+            </key>
+            <one-to-many class="com.roadgovern.hbm.ItemLog" />
+        </set>
+    </class>
+</hibernate-mapping>

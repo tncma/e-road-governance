@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC    
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	
+	<definition name="layout" template="/WEB-INF/jsp/tiles/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/tiles/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/jsp/tiles/menu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jsp" />
+	</definition>	
+	
+	
+	<definition name="homePage" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
+	</definition>
+	
+	<definition name="district" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/district.jsp" />
+	</definition>
+	
+	<definition name="complaint" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/complaint.jsp" />
+	</definition>
+	
+	<definition name="summaryCreation" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/summaryCreation.jsp" />
+	</definition>
+	
+	
+	<definition name="dashboard" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/dashboard.jsp" />
+	</definition>
+	
+	<definition name="track" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/track.jsp" />
+	</definition>
+	
+	<definition name="user" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/user.jsp" />
+	</definition>
+</tiles-definitions>

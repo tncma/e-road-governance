@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 15, 2013 12:26:56 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.roadgovern.hbm.IssuePoc" table="issue_poc" catalog="roadgovern">
+        <composite-id name="id" class="com.roadgovern.hbm.IssuePocId">
+            <key-property name="issueTypeId" type="int">
+                <column name="issue_type_id" />
+            </key-property>
+            <key-property name="userId" type="string">
+                <column name="user_id" length="45" />
+            </key-property>
+            <key-property name="cityId" type="int">
+                <column name="city_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="users" class="com.roadgovern.hbm.Users" update="false" insert="false" fetch="select">
+            <column name="user_id" length="45" not-null="true" />
+        </many-to-one>
+        <many-to-one name="issueType" class="com.roadgovern.hbm.IssueType" update="false" insert="false" fetch="select">
+            <column name="issue_type_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="city" class="com.roadgovern.hbm.City" update="false" insert="false" fetch="select">
+            <column name="city_id" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

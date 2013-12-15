@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 15, 2013 12:26:56 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.roadgovern.hbm.Road" table="road" catalog="roadgovern">
+        <id name="roadId" type="java.lang.Integer">
+            <column name="road_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="city" class="com.roadgovern.hbm.City" fetch="select">
+            <column name="city_id" not-null="true" />
+        </many-to-one>
+        <property name="roadType" type="string">
+            <column name="road_type" length="45" not-null="true" />
+        </property>
+        <property name="roadName" type="string">
+            <column name="road_name" length="100" />
+        </property>
+        <property name="roadWidth" type="float">
+            <column name="road_width" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="roadLength" type="float">
+            <column name="road_length" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="medianAvailable" type="string">
+            <column name="median_available" length="20" />
+        </property>
+        <property name="pedestrianAvailable" type="string">
+            <column name="pedestrian_available" length="20" />
+        </property>
+        <property name="streetLightAvailable" type="string">
+            <column name="street_light_available" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>
